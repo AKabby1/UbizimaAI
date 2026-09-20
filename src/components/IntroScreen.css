@@ -1,0 +1,75 @@
+.intro-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.intro-screen__eyebrow {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.intro-screen h1 {
+  font-size: 2.1rem;
+  margin-top: 6px;
+  max-width: 18ch;
+}
+
+.intro-screen__lede {
+  margin-top: 16px;
+  color: var(--color-ink-soft);
+  max-width: 46ch;
+  font-size: 1.05rem;
+}
+
+.intro-screen__form {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.intro-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.intro-field input {
+  font-family: inherit;
+  font-weight: 400;
+  font-size: 1rem;
+  padding: 12px 14px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+}
+
+.intro-field input:focus {
+  border-color: var(--color-accent);
+}
+
+.intro-screen__lang-row {
+  display: flex;
+  gap: 8px;
+}
+
+.intro-screen__start {
+  margin-top: 34px;
+  align-self: flex-start;
+  background: var(--color-accent);
+  color: var(--color-accent-ink);
+  border: none;
+  border-radius: 999px;
+  padding: 14px 30px;
+  font-size: 1rem;
+  font-weight: 700;
+  transition: transform 0.1s ease;
+}
+
+.intro-screen__start:hover {
+  transform: translateY(-1px);
+}

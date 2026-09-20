@@ -1,0 +1,116 @@
+.question-screen {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.question-screen__eyebrow {
+  color: var(--color-accent);
+  font-weight: 600;
+  font-size: 0.85rem;
+  margin-bottom: 2px;
+}
+
+.question-screen__prompt-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.question-screen__prompt-row h2 {
+  font-size: 1.6rem;
+  max-width: 22ch;
+}
+
+.question-screen__helper {
+  color: var(--color-ink-soft);
+  margin-top: 6px;
+  max-width: 52ch;
+}
+
+.question-screen__input {
+  margin-top: 26px;
+}
+
+/* Choice pills, used for both single- and multi-select */
+.choice-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.choice-pill {
+  background: var(--color-surface);
+  border: 1.5px solid var(--color-border);
+  border-radius: 999px;
+  padding: 10px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-ink);
+  transition: border-color 0.15s ease, background-color 0.15s ease, color 0.15s ease;
+}
+
+.choice-pill:hover {
+  border-color: var(--color-accent);
+}
+
+.choice-pill--selected {
+  background: var(--color-ink);
+  border-color: var(--color-ink);
+  color: #fff;
+}
+
+/* Text inputs */
+.text-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: 1rem;
+  padding: 14px 16px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+  resize: vertical;
+}
+
+.text-input:focus {
+  border-color: var(--color-accent);
+}
+
+/* Severity scale */
+.severity-scale__track {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.severity-scale__dot {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1.5px solid var(--color-border);
+  background: color-mix(in srgb, var(--color-severity) calc(var(--dot-intensity) * 55%), var(--color-surface));
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--color-ink);
+  transition: transform 0.12s ease, border-color 0.12s ease;
+}
+
+.severity-scale__dot:hover {
+  transform: translateY(-2px);
+}
+
+.severity-scale__dot--selected {
+  border-color: var(--color-ink);
+  border-width: 2.5px;
+  transform: translateY(-2px);
+}
+
+.severity-scale__labels {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+  font-size: 0.8rem;
+  color: var(--color-ink-soft);
+}
