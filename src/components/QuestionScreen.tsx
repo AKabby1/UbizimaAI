@@ -48,31 +48,7 @@ export function QuestionScreen({
         )}
 
         {step.kind === "choice-multi" && (
-          <div className="choice-list">
-            {step.options?.map((opt) => {
-              const current: string[] = Array.isArray(value)
-                ? (value.filter((v): v is string => typeof v === "string"))
-                : [];
-              const selected = current.includes(opt.value);
-              return (
-                <button
-                  key={opt.value}
-                  type="button"
-                  aria-pressed={selected}
-                  className={`choice-pill ${selected ? "choice-pill--selected" : ""}`}
-                  onClick={() => {
-                    onChange(
-                      selected
-                        ? current.filter((v) => v !== opt.value)
-                        : [...current, opt.value]
-                    );
-                  }}
-                >
-                  {opt.label}
-                </button>
-              );
-            })}
-          </div>
+          <ChoiceMultiList options={step.options ?? []} value={value} onChange={onChange} />
         )}
 
         {step.kind === "textarea" && (
@@ -101,18 +77,50 @@ export function QuestionScreen({
 
         {step.kind === "photo" && (
           <>
-            <textarea
-              className="text-input"
-              rows={3}
-              placeholder="Describe the location in words too, if you can…"
-              value={typeof value === "string" ? value : ""}
-              onChange={(e) => onChange(e.target.value)}
-              style={{ marginBottom: 14 }}
-            />
-            <PhotoUpload photos={photos} onChange={onPhotosChange} />
+            <ChoiceMultiList options={step.options ?? []} value={value} onChange={onChange} />
+            <div style={{ marginTop: 18 }}>
+              <PhotoUpload photos={photos} onChange={onPhotosChange} />
+            </div>
           </>
         )}
       </div>
+    </div>
+  );
+}
+
+function ChoiceMultiList({
+  options,
+  value,
+  onChange,
+}: {
+  options: { value: string; label: string }[];
+  value: AnswerValue;
+  onChange: (value: AnswerValue) => void;
+}) {
+  const current: string[] = Array.isArray(value)
+    ? value.filter((v): v is string => typeof v === "string")
+    : [];
+
+  return (
+    <div className="choice-list">
+      {options.map((opt) => {
+        const selected = current.includes(opt.value);
+        return (
+          <button
+            key={opt.value}
+            type="button"
+            aria-pressed={selected}
+            className={`choice-pill ${selected ? "choice-pill--selected" : ""}`}
+            onClick={() =>
+              onChange(
+                selected ? current.filter((v) => v !== opt.value) : [...current, opt.value]
+              )
+            }
+          >
+            {opt.label}
+          </button>
+        );
+      })}
     </div>
   );
 }
